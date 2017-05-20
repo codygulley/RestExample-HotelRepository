@@ -21,12 +21,12 @@ Once the application runs you should see something like this
 
 ```
 2014-10-04 18:24:58.870  INFO 10190 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090/http
-2014-10-04 18:24:58.872  INFO 10190 --- [           main] com.khoubyari.example.Application        : Started Application in 6.764 seconds (JVM running for 7.06)
+2014-10-04 18:24:58.872  INFO 10190 --- [           main] com.testwebservices.hotel.Application        : Started Application in 6.764 seconds (JVM running for 7.06)
 ```
 
 ## About the Service
 
-The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like MySQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.khoubyari.example.api.rest.hotelController``` on **port 8090**. (see below)
+The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like MySQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.testwebservices.hotel.api.rest.hotelController``` on **port 8090**. (see below)
 
 More interestingly, you can start calling some of the operational endpoints (see full list below) like ```/metrics``` and ```/health``` (these are available on **port 8091**)
 
@@ -58,7 +58,7 @@ http://localhost:8091/metrics
 ### Create a hotel resource
 
 ```
-POST /example/v1/hotels
+POST /hotel/v1/hotels
 Accept: application/json
 Content-Type: application/json
 
@@ -70,13 +70,13 @@ Content-Type: application/json
 }
 
 RESPONSE: HTTP 201 (Created)
-Location header: http://localhost:8090/example/v1/hotels/1
+Location header: http://localhost:8090/hotel/v1/hotels/1
 ```
 
 ### Retrieve a paginated list of hotels
 
 ```
-http://localhost:8090/example/v1/hotels?page=0&size=10
+http://localhost:8090/hotel/v1/hotels?page=0&size=10
 
 Response: HTTP 200
 Content: paginated list 
@@ -85,7 +85,7 @@ Content: paginated list
 ### Update a hotel resource
 
 ```
-PUT /example/v1/hotels/1
+PUT /hotel/v1/hotels/1
 Accept: application/json
 Content-Type: application/json
 
@@ -174,8 +174,6 @@ Run the service with these command line options:
 mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
 ```
 and then you can connect to it remotely using your IDE. For example, from IntelliJ You have to add remote debug configuration: Edit configuration -> Remote.
-
-# Questions and Comments: khoubyari@gmail.com
 
 
 
